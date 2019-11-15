@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="/hello/registe_success" method="post">
+        {% csrf_token %}
+      <div class="text1">
+        用户名：<input type="text" name="username" >
+      </div>
+      <div class="text1">
+        密码: <input type="password" name="password">
+
+      <div class="button1">
+        <button type="submit" name="submit_button1">提交</button>
+      </div>
+
+      </div>
+    </form>
+  </body>
+</html>
