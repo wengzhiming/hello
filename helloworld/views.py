@@ -33,19 +33,22 @@ def registe(request):
     return render(request, 'registe.html')
 
 def registe_loading(request):
+    string_1 = ['账号重复请重新注册','密码为空，请重新输入']
     if request.method == 'POST':
         try:
                 user = helloUser.objects.get(username=request.POST.get('username'))
-                print(user)
                 if request.POST.get('username') == user.username:
-                    return render(request, 'registe.html')
+                    return render(request, 're_register.html')
         except:
                 hellouser = helloUser()
                 print(request.POST.get('username'))
-                hellouser.username = request.POST.get('username')
-                hellouser.password = request.POST.get('password')
-                hellouser.save()
-                return render(request,'registe_success.html')
+                if request.POST.get('username')!='' and request.POST.get('password')!='':
+                    hellouser.username = request.POST.get('username')
+                    hellouser.password = request.POST.get('password')
+                    hellouser.save()
+                    return render(request,'registe_success.html')
+                else:
+                    return render(request,'re_register.html')
     else:
         return render(request,'404.html')
 
