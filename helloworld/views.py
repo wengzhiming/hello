@@ -32,14 +32,20 @@ def login_success(request):
 def registe(request):
     return render(request, 'registe.html')
 
-def registe_success(request):
+def registe_loading(request):
     if request.method == 'POST':
-        hellouser = helloUser()
-        print(request.POST.get('username'))
-        hellouser.username = request.POST.get('username')
-        hellouser.password = request.POST.get('password')
-        hellouser.save()
-        return render(request,'registe_success.html')
+        try:
+                user = helloUser.objects.get(username=request.POST.get('username'))
+                print(user)
+                if request.POST.get('username') == user.username:
+                    return render(request, 'registe.html')
+        except:
+                hellouser = helloUser()
+                print(request.POST.get('username'))
+                hellouser.username = request.POST.get('username')
+                hellouser.password = request.POST.get('password')
+                hellouser.save()
+                return render(request,'registe_success.html')
     else:
         return render(request,'404.html')
 
