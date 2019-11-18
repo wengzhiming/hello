@@ -24,7 +24,7 @@ urlpatterns = [
     path('', views.index),
     path('hello/index', views.index),
     path('hello/registe', views.registe),
-    path('hello/registe_success', views.registe_success),
+    path('hello/registe_loading', views.registe_loading),
     path('hello/login_success', views.login_success),
     re_path(r'^verify_code/$', views.verify_code)
 ]
