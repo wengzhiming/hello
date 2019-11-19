@@ -11,25 +11,19 @@ from io import BytesIO
 
 
 def index(request):
-    print(request.session.get('verifycode'))
     return render(request, 'index.html')
 # Create your views here.
 
 def login_success(request):
     if request.method == 'POST':
         try:
-            print(request.POST.get('username'))
-            print(request.POST.get('password'))
             user = helloUser.objects.get(username=request.POST.get('username'))
             print(user)
             if user:
                 if user.password == request.POST.get('password'):
-                    print(request.POST.get('verify_code_index'))
-                    print(request.session.get('verifycode'))
                     if request.POST.get('verify_code_index') == request.session.get('verifycode'):
                         return HttpResponse('登录成功,HHHH')
                     else:
-                        print('eeee')
                         return render(request, 'index.html')
                 else:
                     return HttpResponse('密码错误')
@@ -50,7 +44,6 @@ def registe_loading(request):
                     return render(request, 're_register.html')
         except:
                 hellouser = helloUser()
-                print(request.POST.get('username'))
                 if request.POST.get('username')!='' or request.POST.get('password')!='':
                     hellouser.username = request.POST.get('username')
                     hellouser.password = request.POST.get('password')
@@ -104,4 +97,4 @@ def verify_code(request):
     #将图片保存在内存中，文件类型为png
     im.save(buf, 'png')
     #将内存中的图片数据返回给客户端，MIME类型为图片png
-    return HttpResponse(buf.getvalue(), 'image/png',)
+    return HttpResponse(buf.getvalue(), 'image/png')
