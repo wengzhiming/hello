@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>重新填写</title>
+  </head>
+  <body>
+    <form class="" action="/hello/registe_loading" method="post">
+        {% csrf_token %}
+        <div><h1>{{ string_1.0 }}</h1></div>
+      <div class="text1">
+        用户名：<input type="text" name="username" >
+      </div>
+      <div class="text1">
+        密码: <input type="password" name="password">
+
+      <div class="button1">
+        <button type="submit" name="submit_button1">提交</button>
+      </div>
+
+      </div>
+    </form>
+  </body>
+</html>

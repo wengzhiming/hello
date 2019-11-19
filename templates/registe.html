@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
   </head>
   <body>
     <form class="" action="/hello/registe_loading" method="post">
@@ -12,12 +13,26 @@
       </div>
       <div class="text1">
         密码: <input type="password" name="password">
+          <div class ="text1">
+              <p>验证码  <img src="/verify_code/" id="valid-img_1" class="valid-img" alt="验证码"  name="verify_imge"> </p>
+              <input type="text" name="verify_code_registe">
+          </div>
 
       <div class="button1">
         <button type="submit" name="submit_button1">提交</button>
       </div>
 
+
       </div>
     </form>
+
+    <script type="text/javascript">
+
+       // 点击验证码图片 刷新验证码
+    $("#valid-img_1").click(function () {
+        $(this)[0].src += "?";
+    })
+
+</script>
   </body>
 </html>
