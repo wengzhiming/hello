@@ -3,4 +3,4 @@ Pillow==6.2.1
 Pillow-PIL==0.1.dev0
 PyMySQL==0.9.3
 pytz==2019.2
-sqlparse==0.3.0
+sqlparse==0.4.4
